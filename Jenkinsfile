@@ -54,38 +54,21 @@ pipeline {
 
 
 
-        stage('Login to DockerHub') {
-
-            steps {
-
-                withCredentials([usernamePassword(
-
-                credentialsId: 'dockercredentials',
-
+        stage('Build and Push Docker Image') {
+    steps {
+        script {
+            // Log in using credentials stored in Jenkins
+            withCredentials([usernamePassword(
+                credentialsId: 'Docker-credentials', // Ensure this matches your ID in Jenkins
                 usernameVariable: 'USER',
-
                 passwordVariable: 'PASS')]) {
-
-
-
-                    bat 'echo %PASS% | docker login -u %USER% --password-stdin'
-
-                }
-
+                
+                // Login
+                bat 'echo %PASS% | docker login -u %USER% --password-stdin'
+                
+                // Push
+                bat 'docker push blniharika995/i2:latest'
             }
-
         }
-
-
-
-        stage('Push Docker Image') {
-
-            steps {
-
-                bat 'docker push %IMAGE_NAME%:latest'
-
-            }
-
-        }
-
     }
+}
