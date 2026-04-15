@@ -6,7 +6,7 @@ pipeline {
 
     environment {
 
-        DOCKERHUB_CREDENTIALS = 'dockercredentials'
+        DOCKERHUB_CREDENTIALS = 'docker_cr'
 
         IMAGE_NAME = 'blniharika995/i2'
 
@@ -59,7 +59,7 @@ pipeline {
         script {
             // Log in using credentials stored in Jenkins
             withCredentials([usernamePassword(
-                credentialsId: 'dockercredentials', // Ensure this matches your ID in Jenkins
+                credentialsId: 'docker_cr', // Ensure this matches your ID in Jenkins
                 usernameVariable: 'USER',
                 passwordVariable: 'PASS')]) {
                 
