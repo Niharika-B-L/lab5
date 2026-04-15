@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the local Java file into the container
-COPY Hello.java .
+COPY . /app
 
 # Compile the Java file
 RUN javac Hello.java
