@@ -21,7 +21,7 @@ pipeline {
 
                     // 2. Perform Login and Push inside the SAME block
                     withCredentials([usernamePassword(
-                        credentialsId: 'Docker-credentials',
+                        credentialsId: 'dockercredentials',
                         usernameVariable: 'USER',
                         passwordVariable: 'PASS')]) {
                         
