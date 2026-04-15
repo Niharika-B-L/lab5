@@ -67,7 +67,7 @@ pipeline {
                 bat 'echo %PASS%| docker login -u %USER% --password-stdin'
                 
                 // Push
-                bat 'docker push blniharika995/i2:latest'
+                bat 'docker push %IMAGE_NAME%:latest'
             }
         }
     }
