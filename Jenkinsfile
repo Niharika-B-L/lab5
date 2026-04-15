@@ -59,12 +59,12 @@ pipeline {
         script {
             // Log in using credentials stored in Jenkins
             withCredentials([usernamePassword(
-                credentialsId: 'Docker-credentials', // Ensure this matches your ID in Jenkins
+                credentialsId: 'dockercredentials', // Ensure this matches your ID in Jenkins
                 usernameVariable: 'USER',
                 passwordVariable: 'PASS')]) {
                 
                 // Login
-                bat 'echo %PASS% | docker login -u %USER% --password-stdin'
+                bat 'echo %PASS%| docker login -u %USER% --password-stdin'
                 
                 // Push
                 bat 'docker push blniharika995/i2:latest'
